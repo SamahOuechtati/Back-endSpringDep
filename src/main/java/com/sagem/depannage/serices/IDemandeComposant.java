@@ -9,4 +9,7 @@ public interface IDemandeComposant {
 
     List<DemandeComposant> affichercoposant();
     DemandeComposant addComposant (DemandeComposant d);
+    DemandeComposant createDeamndeCpt(String prenom,DemandeComposant demCpt);
+
+
 }

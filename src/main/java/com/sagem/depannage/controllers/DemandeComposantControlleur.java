@@ -1,5 +1,6 @@
 package com.sagem.depannage.controllers;
 
+import com.sagem.depannage.entities.Alertes;
 import com.sagem.depannage.entities.DemandeComposant;
 import com.sagem.depannage.entities.Employers;
 import com.sagem.depannage.serices.IDemandeComposant;
@@ -20,8 +21,17 @@ public class DemandeComposantControlleur {
         return  dmc.affichercoposant();
     }
 
+    @PostMapping("/ajoutDemandeCpt/{prenom}")
+    public DemandeComposant crateDEmandeCpt(@PathVariable String prenom, @RequestBody DemandeComposant demCpt) {
+        return dmc.createDeamndeCpt(prenom, demCpt);
+    }
+
     @PostMapping("/demandecomposant")
     public DemandeComposant addComposant (@RequestBody DemandeComposant d){
         return dmc.addComposant(d);
     }
+
+
 }
+
+

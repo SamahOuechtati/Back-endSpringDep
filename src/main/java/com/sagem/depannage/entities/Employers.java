@@ -24,6 +24,9 @@ public class Employers  {
     @OneToMany
     List <Alertes>alerte;
 
+    @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Passation>pass;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idEmploye")
@@ -34,6 +37,10 @@ public class Employers  {
     long cin;
     String fonction;
     Date datenaissance;
+    @Column(name = "type_utilisation")
+    private String typeUtilisation;
+
+
 
 }
 

@@ -23,15 +23,28 @@ public class EmployeConrolles {
             return emp.AfficherTousEmployes();
     }
 
+    @GetMapping("/{typeUtil}")
+    public List <Employers> afficherEmpParType(@PathVariable String typeUtil) {
+        return emp.findAllByTypeUtilisation(typeUtil);
+    }
+    @GetMapping("/rechercheEmpCin/{cin}")
+    public List <Employers> afficherEmpParType(@PathVariable long cin) {
+        return emp.afficherEmpParCin(cin);
+    }
+
     @PostMapping ("/AddEmployer")
     public  List<Employers> AddEmploye (@RequestBody Employers e){
         return  emp.addEmploye(e);
     }
 
-    @DeleteMapping("{id}")
-    List<Employers>  suppEmp (@PathVariable long id ){
-          return emp.suppEmploye(id);}
+    @DeleteMapping("/{cin}")
+    List<Employers>  suppEmp (@PathVariable long cin ){
+          return emp.suppEmploye(cin);}
 
+    @PutMapping("/ModifierEmpl/{cin}")
+     Employers updateEmployee(@PathVariable("cin") long cin, @RequestBody Employers employ) {
+        return emp.updateEmployee(cin,employ);
 
+    }
 
 }

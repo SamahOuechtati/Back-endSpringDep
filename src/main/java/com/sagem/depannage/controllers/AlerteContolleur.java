@@ -2,6 +2,7 @@ package com.sagem.depannage.controllers;
 
 import com.sagem.depannage.entities.Alertes;
 import com.sagem.depannage.entities.Employers;
+import com.sagem.depannage.entities.Passation;
 import com.sagem.depannage.serices.AlerteService;
 import com.sagem.depannage.serices.EmployeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,20 @@ public class AlerteContolleur {
     public  List<Alertes> AddAlt (@RequestBody Alertes a){
         return  alt.addAlt(a);
     }
+    @PostMapping("/ajoutalerte/{prenom}")
+    public Alertes createPassation(@PathVariable String prenom, @RequestBody Alertes alerte) {
+        return alt.createalerte(prenom, alerte);
+    }
 
     @DeleteMapping("{id}")
     List<Alertes>  suppAlt (@PathVariable long id ){
         return alt.suppAlt(id);}
+@DeleteMapping("/supptousalertes")
+public void suppttAlertes(){
+         alt.suppttalerte();
+}
+    @GetMapping("/{nomDep}")
+    List<Alertes> afficherAlertePArNom(@PathVariable String nomDep){
+        return  alt.AfficherLeurAlertes(nomDep);
+    }
 }
